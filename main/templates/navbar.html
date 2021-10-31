@@ -1,0 +1,23 @@
+
+    {% block content %}
+    <div style="display: block;margin-left: 80%;">
+        {% if request.user.is_authenticated %}
+        <span>Bienvenu <a style="text-decoration: none;" href="{% url 'profile' %}">{{request.user}}</a></span>
+        <span><a href="{% url 'logout' %}">Logout</a></span>
+        {% else %}
+        <span><a href="{% url 'login' %}">Login</a></span>
+        {% endif %}
+    </div>
+    <ul style="list-style-type: none; text-decoration: none;">
+        <li><a href="{% url 'home' %}">home</a></li>
+        {% if request.user.is_superuser %}
+        <li><a href="{% url 'ajouter_appeloffre' %}">ajouter offre</a></li>
+        {% endif %}
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'aff_postule' %}">aff spostule</a></li>
+        <li><a href="{% url 'aff_user' %}">tous les users</a></li>
+        {% endif %}
+        <li></li>
+        <li></li>
+    </ul>
+    {% endblock %}

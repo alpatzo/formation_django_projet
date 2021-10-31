@@ -1,0 +1,25 @@
+<h1>tous les users</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>username</th>
+            <th>email</th>
+            <th>roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in users %}
+        <tr>
+            <td><a href="{% url 'aff_un_user' %">{{i.username}}</a></td>
+            <td>{{i.email}}</td>
+            <td>{% if i.is_superuser %} admin
+                {% elif i.is_staff %} gestionaire
+                {% else %} simple user
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

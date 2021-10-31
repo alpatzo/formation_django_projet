@@ -1,0 +1,10 @@
+{% include 'navbar.html' %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    are u sure de delete {{suppPoste}}
+    <a href="{% url 'home' %}">Annuler</a>
+    <input type="submit" value="delete">
+</form method="POST">
+{% endblock content %}
